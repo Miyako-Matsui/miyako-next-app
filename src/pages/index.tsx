@@ -2,10 +2,9 @@
 import { useState } from 'react'
 import { GetServerSideProps, NextPage } from 'next'
 import styles from './page.module.css'
-import Button from '@mui/material/Button'
-import { Typography } from '@mui/material'
-import HomeButton from './homebutton'
+import { Button, Typography, Grid } from '@mui/material'
 import Link from 'next/link'
+import HouseIcon from '@mui/icons-material/House'
 
 interface SearchCatImege {
   id: string
@@ -33,35 +32,34 @@ const Home: NextPage<IndexPageProps> = ({ initialCatImageUrl }) => {
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <Typography variant="h2" style={{ margin: 3 }}>
-        CatPixie
-      </Typography>
-      <Typography variant="h5" style={{ margin: 2 }}>
-        Push the Meow button below to find your favorite cat picture
-      </Typography>{' '}
-      <img
-        src={catImageUrl}
-        alt="Cat picture"
-        style={{ maxWidth: '100%', height: 'auto', margin: 30 }}
-      />
-      <Button variant="outlined" color="secondary" onClick={handleCatClick}>
-        Meow
-      </Button>
-      <Link
-        style={{ marginTop: 50, marginBottom: 5 }}
-        href="https://miyakomatsui.netlify.app/"
+    <>
+      <Grid
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
       >
-        Home
-      </Link>
-    </div>
+        <Typography variant="h2" style={{ margin: 3 }}>
+          CatPixie
+        </Typography>
+        <Typography variant="h5" style={{ margin: 2 }}>
+          Push the Meow button below to find your favorite cat picture
+        </Typography>{' '}
+        <img
+          src={catImageUrl}
+          alt="Cat picture"
+          style={{ maxWidth: '100%', height: 'auto', margin: 30 }}
+        />
+        <Button variant="outlined" color="secondary" onClick={handleCatClick}>
+          Meow
+        </Button>
+      </Grid>
+      <div style={{ textAlign: 'center', padding: '20px' }}>
+        <Link href="https://miyakomatsui.netlify.app/">
+          <HouseIcon />
+        </Link>
+      </div>
+    </>
   )
 }
 
